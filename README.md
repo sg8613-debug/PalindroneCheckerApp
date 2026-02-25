@@ -1,6 +1,12 @@
-# PalindroneCheckerApp
-//running procedure
-//flow of project
-//objective
-//what are topics it will be covered
-//which usecase
+# Palindrome Checker App
+
+## Use Case 1 – Display Application Details
+
+### Objective
+To display application name, version, and welcome message.
+
+### Flow
+Start Program → Display Details → End
+
+### Output
+Displays application banner and version information.

@@ -1,12 +1,17 @@
-# Palindrome Checker App
+USE CASE 2 : Hardcoded Palindrome Check
 
-## Use Case 1 – Display Application Details
+-use hardcoded string "madam"
 
-### Objective
-To display application name, version, and welcome message.
+reversed string using loop
+compared origin and reversed string
+printd result using if-else
+Use case 3 :
 
-### Flow
-Start Program → Display Details → End
+this class checks whether the string is palindrome
+by reversing string and compairing with it with
+th original value
 
-### Output
-Displays application banner and version information.
+Use case 4 :
+* this class validates a palindrome by converting
+* the string into a character array and comapiring
+* characters using the two pointer technique

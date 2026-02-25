@@ -1,25 +1,26 @@
 /**
  * ========================================================================
- * MAIN CLASS - usecase1PalindromeApp
+ * MAIN CLASS - usecase2PalindromeApp
  * ========================================================================
  *
- * use case 1: application entry & welcome messgae
+ * use case 2: hardcoded palindrome checker app
  *
  * description :
- * this class represents the entry point of the
- * palindrome checker app
+ * this class demonstrates the basic palindrome validation
+ * using a hardcoded string value
  *
  * at this stage , the application:
- * startes the execution from the main() method
- * displays a welcome message
- * shows application version
+ * stores a predfined string
+ * compares characters from both strings
+ * determine whether the string is palindrome
+ * display the result of the console
  *
- * no palindrome logic is implemented yet
+ * this usecase introduces the fundamental comparison logic
+ * before using advance data structures
  *
- * the goal is to establish a clear startu flow
  *
  * @author - shourya
- * @version 1.0
+ * @version 2.0
  */
 
 
@@ -29,22 +30,24 @@
 
 public class PalindromeCheckerApp {
 
-        // Main method - Entry point of the program
-        public static void main(String[] args) {
+    public static void main(String[] args) {
 
-            // Display Application Name
-            System.out.println("=================================");
-            System.out.println("     Palindrome Checker App      ");
-            System.out.println("=================================");
+        // Hardcoded string
+        String word = "madam";
 
-            // Display Version
-            System.out.println("Version: 1.0");
+        // Reverse the string
+        String reversed = "";
 
-            // Welcome Message
-            System.out.println("Welcome to the Palindrome Checker Application!");
-
-            // Next step message
-            System.out.println("Program will continue to next use case...");
+        for (int i = word.length() - 1; i >= 0; i--) {
+            reversed = reversed + word.charAt(i);
         }
-    }
 
+        // Check palindrome using if-else
+        if (word.equals(reversed)) {
+            System.out.println("The word \"" + word + "\" is a Palindrome.");
+        } else {
+            System.out.println("The word \"" + word + "\" is NOT a Palindrome.");
+        }
+
+    }
+}

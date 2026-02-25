@@ -1,3 +1,5 @@
+# Palindrome Checker App
+
 USE CASE 2 : Hardcoded Palindrome Check
 
 -use hardcoded string "madam"
@@ -10,8 +12,15 @@ Use case 3 :
 this class checks whether the string is palindrome
 by reversing string and compairing with it with
 th original value
+Use case 4: reversed string based palindrome check
 
-Use case 4 :
-* this class validates a palindrome by converting
-* the string into a character array and comapiring
-* characters using the two pointer technique
+this class validates a palindrome by converting
+the string into the character array and compairing
+characters using the two pointer technique
+
+
+* Use Case 5: Stack Based Palindrome Checker
+*
+* Description:
+* This class validates a palindrome using a Stack
+* data structure which follows the LIFO principle.

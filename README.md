@@ -1,12 +1,12 @@
-# Palindrome Checker App
+USE CASE 2 : Hardcoded Palindrome Check 
 
-## Use Case 1 – Display Application Details
+-use hardcoded string "madam"
+- reversed string using loop
+- compared origin and reversed string 
+- printd result using if-else
 
-### Objective
-To display application name, version, and welcome message.
+Use case 3 :
 
-### Flow
-Start Program → Display Details → End
-
-### Output
-Displays application banner and version information.
+* this class checks whether the string is palindrome
+* by reversing string and compairing with it with
+* th original value

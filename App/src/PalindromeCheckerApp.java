@@ -1,10 +1,10 @@
 /**
  UC5-Stack-BasedPalindrome
  * =========================================================
- * MAIN CLASS - UseCase6PalindromeCheckerApp
+ * MAIN CLASS - UseCase7PalindromeCheckerApp
  * =========================================================
  *
- * Use Case 6 : Queue + Stack Based Palindrome Check
+ * Use Case 7 : Queue + Stack Based Palindrome Check
  *
  * Description:
  * This class validates a palindrome using a Stack
@@ -43,43 +43,37 @@
  *
  *
  * @author - shourya
- * @version 4.0
+ * @version 7.0
  main
  */
 
-import java.util.Stack;
-import java.util.Queue;
-import java.util.LinkedList;
+import java.util.Deque;
+import java.util.ArrayDeque;
 
 public class PalindromeCheckerApp {
 
  public static void main(String[] args) {
 
   // Original string
-  String word = "radar";
+  String word = "level";
 
-  // Create Stack (LIFO)
-  Stack<Character> stack = new Stack<>();
+  // Create Deque (Double Ended Queue)
+  Deque<Character> deque = new ArrayDeque<>();
 
-  // Create Queue (FIFO)
-  Queue<Character> queue = new LinkedList<>();
-
-  // Step 1: Enqueue characters and Push into stack
+  // Step 1: Insert characters into deque
   for (int i = 0; i < word.length(); i++) {
-   char ch = word.charAt(i);
-   stack.push(ch);      // LIFO
-   queue.add(ch);       // FIFO
+   deque.addLast(word.charAt(i));
   }
 
   boolean isPalindrome = true;
 
-  // Step 2: Compare dequeue vs pop
-  while (!stack.isEmpty()) {
+  // Step 2: Remove first and last, then compare
+  while (deque.size() > 1) {
 
-   char fromStack = stack.pop();     // Reverse order
-   char fromQueue = queue.remove();  // Original order
+   char front = deque.removeFirst();  // From beginning
+   char rear = deque.removeLast();    // From end
 
-   if (fromStack != fromQueue) {
+   if (front != rear) {
     isPalindrome = false;
     break;
    }

@@ -1,10 +1,10 @@
 /**
  UC5-Stack-BasedPalindrome
  * =========================================================
- * MAIN CLASS - UseCase5PalindromeCheckerApp
+ * MAIN CLASS - UseCase6PalindromeCheckerApp
  * =========================================================
  *
- * Use Case 5: Stack Based Palindrome Checker
+ * Use Case 6 : Queue + Stack Based Palindrome Check
  *
  * Description:
  * This class validates a palindrome using a Stack
@@ -47,79 +47,49 @@
  main
  */
 
-
 import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
+
 public class PalindromeCheckerApp {
 
-    public static void main(String[] args) {
+ public static void main(String[] args) {
 
-        // Original string
-        String word = "madam";
+  // Original string
+  String word = "radar";
 
-UC5-Stack-BasedPalindrome
-        // Create Stack
-        Stack<Character> stack = new Stack<>();
+  // Create Stack (LIFO)
+  Stack<Character> stack = new Stack<>();
 
-        // Step 1: Push characters into stack
-        for (int i = 0; i < word.length(); i++) {
-            stack.push(word.charAt(i));
-        }
+  // Create Queue (FIFO)
+  Queue<Character> queue = new LinkedList<>();
 
-        boolean isPalindrome = true;
+  // Step 1: Enqueue characters and Push into stack
+  for (int i = 0; i < word.length(); i++) {
+   char ch = word.charAt(i);
+   stack.push(ch);      // LIFO
+   queue.add(ch);       // FIFO
+  }
 
-        // Step 2: Pop from stack and compare
-        for (int i = 0; i < word.length(); i++) {
-            char poppedChar = stack.pop();
+  boolean isPalindrome = true;
 
-            if (word.charAt(i) != poppedChar) {
-                isPalindrome = false;
-                break;
-            }
-        }
+  // Step 2: Compare dequeue vs pop
+  while (!stack.isEmpty()) {
 
-        // Step 3: Print result
-        if (isPalindrome) {
-            System.out.println("The word \"" + word + "\" is a Palindrome.");
-        } else {
-            System.out.println("The word \"" + word + "\" is NOT a Palindrome.");
-        }
-    }
+   char fromStack = stack.pop();     // Reverse order
+   char fromQueue = queue.remove();  // Original order
+
+   if (fromStack != fromQueue) {
+    isPalindrome = false;
+    break;
+   }
+  }
+
+  // Step 3: Display result
+  if (isPalindrome) {
+   System.out.println("The word \"" + word + "\" is a Palindrome.");
+  } else {
+   System.out.println("The word \"" + word + "\" is NOT a Palindrome.");
+  }
+ }
 }
-=======
-public class PalindromeCheckerApp {
-
-    public static void main(String[] args) {
-
-        // Original string
-        String word = "level";
-
-        // Step 1: Convert string to character array
-        char[] characters = word.toCharArray();
-
-        // Step 2: Two-pointer approach
-        int start = 0;
-        int end = characters.length - 1;
-
-        boolean isPalindrome = true;
-
-        while (start < end) {
-
-            // Step 3: Compare start and end characters
-            if (characters[start] != characters[end]) {
-                isPalindrome = false;
-                break;
-            }
-
-            start++;
-            end--;
-        }
-
-        // Display result
-        if (isPalindrome) {
-            System.out.println("The word \"" + word + "\" is a Palindrome.");
-        } else {
-            System.out.println("The word \"" + word + "\" is NOT a Palindrome.");
-        }
-    }
-}
- main

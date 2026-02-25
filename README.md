@@ -1,12 +1,6 @@
-# Palindrome Checker App
+USE CASE 2 : Hardcoded Palindrome Check 
 
-## Use Case 1 – Display Application Details
-
-### Objective
-To display application name, version, and welcome message.
-
-### Flow
-Start Program → Display Details → End
-
-### Output
-Displays application banner and version information.
+-use hardcoded string "madam"
+- reversed string using loop
+- compared origin and reversed string 
+- printd result using if-else

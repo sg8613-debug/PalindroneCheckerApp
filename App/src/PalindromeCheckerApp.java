@@ -46,40 +46,68 @@
  * @version 7.0
  main
  */
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Stack;
 
-public class PalindromeChecker {
+// Strategy interface
+interface PalindromeStrategy {
+ boolean checkPalindrome(String input);
+}
 
- // Encapsulated method
+// Stack-based strategy
+class StackStrategy implements PalindromeStrategy {
+ @Override
  public boolean checkPalindrome(String input) {
-
   String normalized = input.replaceAll("\\s+", "").toLowerCase();
-
   Stack<Character> stack = new Stack<>();
-
-  for (char c : normalized.toCharArray()) {
-   stack.push(c);
-  }
-
+  for (char c : normalized.toCharArray()) stack.push(c);
   String reversed = "";
-
-  while (!stack.isEmpty()) {
-   reversed += stack.pop();
-  }
-
+  while (!stack.isEmpty()) reversed += stack.pop();
   return normalized.equals(reversed);
  }
+}
+
+// Deque-based strategy
+class DequeStrategy implements PalindromeStrategy {
+ @Override
+ public boolean checkPalindrome(String input) {
+  String normalized = input.replaceAll("\\s+", "").toLowerCase();
+  Deque<Character> deque = new ArrayDeque<>();
+  for (char c : normalized.toCharArray()) deque.addLast(c);
+  while (deque.size() > 1) {
+   if (!deque.removeFirst().equals(deque.removeLast())) return false;
+  }
+  return true;
+ }
+}
+
+// Context class
+class PalindromeContext {
+ private PalindromeStrategy strategy;
+
+ public PalindromeContext(PalindromeStrategy strategy) {
+  this.strategy = strategy;
+ }
+
+ public boolean executeStrategy(String input) {
+  return strategy.checkPalindrome(input);
+ }
+}
+
+// Main class to test
+public class UC12_SingleFilePalindrome {
 
  public static void main(String[] args) {
 
-  PalindromeChecker checker = new PalindromeChecker();
+  String input = "A man a plan a canal Panama";
 
-  String input = "Madam";
+  // Use Stack strategy
+  PalindromeContext context = new PalindromeContext(new StackStrategy());
+  System.out.println("Using Stack Strategy: " + (context.executeStrategy(input) ? "Palindrome" : "Not Palindrome"));
 
-  if (checker.checkPalindrome(input)) {
-   System.out.println("The string is a Palindrome");
-  } else {
-   System.out.println("The string is NOT a Palindrome");
-  }
+  // Use Deque strategy
+  context = new PalindromeContext(new DequeStrategy());
+  System.out.println("Using Deque Strategy: " + (context.executeStrategy(input) ? "Palindrome" : "Not Palindrome"));
  }
 }

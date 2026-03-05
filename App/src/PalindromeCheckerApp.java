@@ -50,12 +50,11 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Stack;
 
-// Strategy interface
 interface PalindromeStrategy {
  boolean checkPalindrome(String input);
 }
 
-// Stack-based strategy
+// Stack strategy
 class StackStrategy implements PalindromeStrategy {
  @Override
  public boolean checkPalindrome(String input) {
@@ -68,7 +67,7 @@ class StackStrategy implements PalindromeStrategy {
  }
 }
 
-// Deque-based strategy
+// Deque strategy
 class DequeStrategy implements PalindromeStrategy {
  @Override
  public boolean checkPalindrome(String input) {
@@ -82,7 +81,22 @@ class DequeStrategy implements PalindromeStrategy {
  }
 }
 
-// Context class
+// Recursive strategy
+class RecursiveStrategy implements PalindromeStrategy {
+ @Override
+ public boolean checkPalindrome(String input) {
+  String normalized = input.replaceAll("\\s+", "").toLowerCase();
+  return isPalindrome(normalized, 0, normalized.length() - 1);
+ }
+
+ private boolean isPalindrome(String s, int start, int end) {
+  if (start >= end) return true;
+  if (s.charAt(start) != s.charAt(end)) return false;
+  return isPalindrome(s, start + 1, end - 1);
+ }
+}
+
+// Context
 class PalindromeContext {
  private PalindromeStrategy strategy;
 
@@ -95,19 +109,31 @@ class PalindromeContext {
  }
 }
 
-// Main class to test
-public class UC12_SingleFilePalindrome {
+// Main class
+public class PalindromePerformance {
 
  public static void main(String[] args) {
 
   String input = "A man a plan a canal Panama";
 
-  // Use Stack strategy
-  PalindromeContext context = new PalindromeContext(new StackStrategy());
-  System.out.println("Using Stack Strategy: " + (context.executeStrategy(input) ? "Palindrome" : "Not Palindrome"));
+  PalindromeStrategy[] strategies = {
+          new StackStrategy(),
+          new DequeStrategy(),
+          new RecursiveStrategy()
+  };
 
-  // Use Deque strategy
-  context = new PalindromeContext(new DequeStrategy());
-  System.out.println("Using Deque Strategy: " + (context.executeStrategy(input) ? "Palindrome" : "Not Palindrome"));
+  String[] names = {"Stack", "Deque", "Recursive"};
+
+  for (int i = 0; i < strategies.length; i++) {
+   PalindromeContext context = new PalindromeContext(strategies[i]);
+
+   long startTime = System.nanoTime();
+   boolean result = context.executeStrategy(input);
+   long endTime = System.nanoTime();
+
+   System.out.println(names[i] + " Strategy: " +
+           (result ? "Palindrome" : "Not Palindrome") +
+           " | Time: " + (endTime - startTime) + " ns");
+  }
  }
 }

@@ -1,45 +1,181 @@
-USE CASE 2 : Hardcoded Palindrome Check 
+Use Case 1: Welcome One
+Displayed a welcome banner in the console
 
-UC5-Stack-BasedPalindrome
-USE CASE 2 : Hardcoded Palindrome Check
+Optionally showed the first basic palindrome check
 
--use hardcoded string "madam"
+Guided user to next steps in the app
 
-reversed string using loop
-compared origin and reversed string
-printd result using if-else
-Use case 3 :
+Concepts Used:
 
-this class checks whether the string is palindrome
-by reversing string and compairing with it with
-th original value
-Use case 4: reversed string based palindrome check
+Console output (System.out.println)
 
-this class validates a palindrome by converting
-the string into the character array and compairing
-characters using the two pointer technique
+Basic string display
 
+Program structure and flow
 
-* Use Case 5: Stack Based Palindrome Checker
-*
-* Description:
-* This class validates a palindrome using a Stack
-* data structure which follows the LIFO principle.
-=======
--use hardcoded string "madam"
-- reversed string using loop
-- compared origin and reversed string 
-- printd result using if-else
+Use Case 2: Hardcoded Palindrome Check
+Used hardcoded string "madam"
+Reversed string using loop
+Compared original and reversed string
+Printed result using if-else
+Use Case 3: Palindrome Check Using String Reverse
+Goal: Check whether a string is a palindrome by reversing it.
 
-Use case 3 :
+Flow:
 
-* this class checks whether the string is palindrome
-* by reversing string and compairing with it with
-* th original value
+Reverse string using loop
+Compare original and reversed string
+Display result
+Concepts Used:
 
-Use case 4: reversed string based palindrome check
+for loop
+String immutability
+String concatenation
+equals() method
+Use Case 4: Character Array Based Palindrome Check
+Goal: Convert string to char[] and compare characters using two-pointer technique.
 
-* this class validates a palindrome by converting
-* the string into the character array and compairing
-* characters using the two pointer technique
- main
+Flow:
+
+Convert string to char array
+Use start and end pointers
+Compare characters
+Display result
+Concepts Used:
+
+char[] array
+Array indexing
+Two-pointer technique
+Efficient comparison without extra string objects
+Use Case 5: Stack-Based Palindrome Checker
+Goal: Use stack to reverse characters and validate palindrome.
+
+Flow:
+
+Push characters into stack
+Pop characters in reverse order
+Compare with original string
+Display result
+Concepts Used:
+
+Stack (LIFO)
+push() and pop()
+Reversal using stack
+Use Case 6: Queue + Stack Based Palindrome Check
+Goal: Demonstrate FIFO vs LIFO using Queue and Stack.
+
+Flow:
+
+Enqueue characters into queue
+Push characters into stack
+Compare dequeue and pop results
+Display result
+Concepts Used:
+
+Queue (FIFO)
+Stack (LIFO)
+enqueue & dequeue
+push & pop
+Logical comparison
+Use Case 7: Deque-Based Optimized Palindrome Check
+Goal: Use Deque to compare front and rear characters efficiently.
+
+Flow:
+
+Insert characters into deque
+Remove first & last characters
+Compare until empty
+Display result
+Concepts Used:
+
+Deque (Double Ended Queue)
+Front & Rear access
+Optimized data handling
+Use Case 8: Linked List Based Palindrome Check
+Goal: Check palindrome using singly linked list.
+
+Flow:
+
+Convert string to linked list
+Reverse second half
+Compare halves
+Display result
+Concepts Used:
+
+Singly Linked List
+Node traversal
+Fast & Slow pointer technique
+In-place reversal
+Use Case 9: Recursive Palindrome Check
+Goal: Check palindrome using recursion.
+
+Flow:
+
+Recursive call compares start & end characters
+Base condition exits recursion
+Display result
+Concepts Used:
+
+Recursion
+Base condition
+Call stack
+Use Case 10: Case-Insensitive & Space-Ignored Palindrome
+Goal: Ignore spaces and case while checking a palindrome.
+
+Flow:
+
+Normalize the string (remove spaces, punctuation, lowercase)
+Apply two-pointer palindrome logic
+Display result
+Concepts Used:
+
+String preprocessing
+Regular expressions
+Two-pointer comparison
+Use Case 11: Object-Oriented Palindrome Service
+Created PalindromeChecker class
+
+Exposed checkPalindrome() method
+
+Normalized input string
+
+Compared characters using internal logic
+
+printed result showing whether input is a palindrome
+
+Concepts Used:
+
+Encapsulation
+
+Single Responsibility Principle
+
+ternal data handling (Stack / Array)
+
+Use Case 12: Strategy Pattern for Palindrome Algorithms
+Goal: Choose palindrome algorithm dynamically at runtime.
+
+Flow:
+
+Define PalindromeStrategy interface
+Implement StackStrategy and DequeStrategy
+Inject strategy into context
+Execute dynamically
+Concepts Used:
+
+Interface
+Polymorphism
+Strategy Pattern
+Runtime behavior switching
+Use Case 13: Performance Comparison
+Goal: Compare the execution performance of different palindrome algorithms.
+
+Flow:
+
+Run multiple algorithms: Stack, Deque, Two-Pointer
+Capture execution time using System.nanoTime()
+Display results for each
+Concepts Used:
+
+System.nanoTime()
+Algorithm comparison
+Stack, Deque, Array

@@ -46,44 +46,90 @@
  * @version 7.0
  main
  */
+class Node {
+ char data;
+ Node next;
 
-import java.util.Deque;
-import java.util.ArrayDeque;
+ Node(char data) {
+  this.data = data;
+  this.next = null;
+ }
+}
 
-public class PalindromeCheckerApp {
+public class LinkedListPalindrome {
 
- public static void main(String[] args) {
+ // Convert string to linked list
+ public static Node createLinkedList(String str) {
+  Node head = null, tail = null;
 
-  // Original string
-  String word = "level";
+  for (char c : str.toCharArray()) {
+   Node newNode = new Node(c);
 
-  // Create Deque (Double Ended Queue)
-  Deque<Character> deque = new ArrayDeque<>();
-
-  // Step 1: Insert characters into deque
-  for (int i = 0; i < word.length(); i++) {
-   deque.addLast(word.charAt(i));
-  }
-
-  boolean isPalindrome = true;
-
-  // Step 2: Remove first and last, then compare
-  while (deque.size() > 1) {
-
-   char front = deque.removeFirst();  // From beginning
-   char rear = deque.removeLast();    // From end
-
-   if (front != rear) {
-    isPalindrome = false;
-    break;
+   if (head == null) {
+    head = tail = newNode;
+   } else {
+    tail.next = newNode;
+    tail = newNode;
    }
   }
 
-  // Step 3: Display result
-  if (isPalindrome) {
-   System.out.println("The word \"" + word + "\" is a Palindrome.");
+  return head;
+ }
+
+ // Reverse a linked list
+ public static Node reverse(Node head) {
+  Node prev = null;
+  Node current = head;
+
+  while (current != null) {
+   Node next = current.next;
+   current.next = prev;
+   prev = current;
+   current = next;
+  }
+
+  return prev;
+ }
+
+ // Check palindrome
+ public static boolean isPalindrome(Node head) {
+  if (head == null || head.next == null)
+   return true;
+
+  Node slow = head;
+  Node fast = head;
+
+  // Find middle of list
+  while (fast != null && fast.next != null) {
+   slow = slow.next;
+   fast = fast.next.next;
+  }
+
+  // Reverse second half
+  Node secondHalf = reverse(slow);
+  Node firstHalf = head;
+
+  // Compare halves
+  while (secondHalf != null) {
+   if (firstHalf.data != secondHalf.data) {
+    return false;
+   }
+   firstHalf = firstHalf.next;
+   secondHalf = secondHalf.next;
+  }
+
+  return true;
+ }
+
+ public static void main(String[] args) {
+  String input = "racecar";
+
+  Node head = createLinkedList(input);
+
+  if (isPalindrome(head)) {
+   System.out.println("The string is a Palindrome.");
   } else {
-   System.out.println("The word \"" + word + "\" is NOT a Palindrome.");
+   System.out.println("The string is NOT a Palindrome.");
   }
  }
 }

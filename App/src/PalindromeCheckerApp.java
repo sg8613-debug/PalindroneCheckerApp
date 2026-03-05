@@ -46,33 +46,37 @@
  * @version 7.0
  main
  */
-public class CaseInsensitivePalindrome {
+import java.util.Stack;
 
- public static boolean isPalindrome(String input) {
+public class PalindromeChecker {
 
-  // Normalize string (remove spaces and convert to lowercase)
+ // Encapsulated method
+ public boolean checkPalindrome(String input) {
+
   String normalized = input.replaceAll("\\s+", "").toLowerCase();
 
-  int left = 0;
-  int right = normalized.length() - 1;
+  Stack<Character> stack = new Stack<>();
 
-  // Two-pointer palindrome check
-  while (left < right) {
-   if (normalized.charAt(left) != normalized.charAt(right)) {
-    return false;
-   }
-   left++;
-   right--;
+  for (char c : normalized.toCharArray()) {
+   stack.push(c);
   }
 
-  return true;
+  String reversed = "";
+
+  while (!stack.isEmpty()) {
+   reversed += stack.pop();
+  }
+
+  return normalized.equals(reversed);
  }
 
  public static void main(String[] args) {
 
-  String input = "A man a plan a canal Panama";
+  PalindromeChecker checker = new PalindromeChecker();
 
-  if (isPalindrome(input)) {
+  String input = "Madam";
+
+  if (checker.checkPalindrome(input)) {
    System.out.println("The string is a Palindrome");
   } else {
    System.out.println("The string is NOT a Palindrome");
